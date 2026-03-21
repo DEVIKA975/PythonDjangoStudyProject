@@ -1,0 +1,14 @@
+<h1>Hello Django</h1>
+<p>This is a simple Django application.</p>
+
+{%for movie_obj in movies%}
+    <h1>Title: {{movie_obj.title|upper}}</h1>
+    <p>Summary: {{movie_obj.summary | default:"No data available."}}</p>
+    <p>Year: {{movie_obj.year }}</p>
+    {% if movie_obj.success %}
+        <p><strong>Movie Success!</strong></p>
+    {% else %}
+        <p><strong>Movie Failure!</strong></p>
+    {% endif %}
+{% endfor %}
+

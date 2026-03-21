@@ -1,0 +1,35 @@
+{% extends 'blank_layout.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Movie List</h1>
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Summary</th>
+        <th>Year</th>
+        <th>Success</th>
+        <th>Image</th>
+        <th>Edit/Delete</th>
+    </tr>
+
+    {% for movie_obj in movies %}
+        <tr>
+            <td><p>{{ movie_obj.title|upper }}</p></td>
+            <td><p>{{ movie_obj.summary|default:"No data available." }}</p></td>
+            <td><p>{{ movie_obj.year }}</p></td>
+            <td>{{ movie_obj.success|yesno:"Success,Failure" }}</td>
+            <td>
+                {% if movie_obj.img_name %}
+                    <img src="{{ movie_obj.img_name.url }}" alt="Movie Image" />
+                {% endif %}
+            </td>
+            <td>
+                <a href="{% url 'movie_edit' movie_obj.id %}">Edit</a>
+                <a href="{% url 'movie_delete' movie_obj.id %}">Delete</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}
+   

@@ -1,0 +1,9 @@
+{% load static %}
+<h1>Movie Project</h1>
+<img src="{% static 'images/movielogo.png'  %}" />
+<p>Welcome to the Movie Project! This project allows you to manage your movie collection, including creating, editing, and listing movies.</p>
+{% include 'menu.html' %}
+
+{% block content %}
+<p>place your content here</p>
+{% endblock %}

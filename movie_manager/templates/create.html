@@ -1,0 +1,11 @@
+{% extends 'blank_layout.html' %}
+<h1>Create Movie</h1> 
+
+{% block content %}
+<p>This is the page where you can create a new movie entry. Please fill out the form below to add a new movie to your collection.</p>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ frm.as_p }}
+    <button type="submit" >Create Movie</button>
+</form>
+{% endblock %}
