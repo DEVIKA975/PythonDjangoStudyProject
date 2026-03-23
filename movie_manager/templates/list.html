@@ -2,7 +2,19 @@
 {% load static %}
 
 {% block content %}
-<h1>Movie List {{ visits }} visits</h1>
+
+{% if recent_movies %}
+    <h2>Recently Visited Movies(Top 5)</h2>
+    <ul>
+        {% for movie in recent_movies %}
+            <li>{{ movie.title }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<h1>Movie List {{ visits_from_cookie }} visits from cookie</h1>
+<h1>Movie List {{ visits_from_session }} visits from session</h1>
+
 <table>
     <tr>
         <th>Title</th>
