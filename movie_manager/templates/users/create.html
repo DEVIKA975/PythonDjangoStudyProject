@@ -1,0 +1,21 @@
+{% extends 'blank_layout.html' %}
+<h1>Create Movie</h1> 
+
+{% block content %}
+<p>This is the page where you can create a new movie entry. Please fill out the form below to add a new movie to your collection.</p>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label>UserName :</label>
+    <input type="text" name="username" required>
+    <label>Password :</label>
+    <input type="password" name="password" required>
+    <button type="submit" >Sign Up</button>
+</form>
+<p style="color:green;" >
+    {% if user %}
+    User created successfully! Username: {{ user.username }}
+    {% elif error_message%}
+    <p style="color:red;" >{{error_message}}</p>
+    {% endif %}
+</p>
+{% endblock %}
